@@ -37,7 +37,7 @@ const PostIndex: React.FC<PostIndexProps> = ({ limit = 5 }) => {
   return (
     <Layout>
       <section>
-        <h3>Archive</h3>
+        {/* <h3>Archive</h3> */}
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
@@ -45,8 +45,8 @@ const PostIndex: React.FC<PostIndexProps> = ({ limit = 5 }) => {
                 href={`/post?slug=${post.slug}&apiRoute=post`}
                 as={`/post/${post.slug}`}
               >
-                {/* <a>{post.title.rendered}</a>  */}
-                {/* Cannot use with nextjs */}
+                {/* Cannot use <a> with nextjs */}
+                <div>{post.title.rendered}</div> 
               </Link>
             </li>
           ))}
