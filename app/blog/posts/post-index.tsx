@@ -37,7 +37,7 @@ const PostIndex: React.FC<PostIndexProps> = ({ limit = 5 }) => {
   return (
     <Layout>
       <section>
-        {/* <h3>Archive</h3> */}
+        <h3 className="pb-8">Posts Archive</h3>
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
