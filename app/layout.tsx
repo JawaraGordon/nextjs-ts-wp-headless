@@ -4,8 +4,8 @@ import { Inter } from 'next/font/google'
 // components/Layout.tsx
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
-import Header from './components/header';
-import Footer from './components/footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 
 

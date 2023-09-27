@@ -1,7 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
-import Layout from './layout';
-import { Config } from '../../../config';
+import { Config } from '../../config';
 
 interface Post {
   id: number;
@@ -11,18 +10,19 @@ interface Post {
   };
 }
 
-interface PostIndexProps {
+interface RecentPostsProps {
   limit?: number;
 }
 
-const PostIndex: React.FC<PostIndexProps> = ({ limit = 5 }) => {
+const RecentPosts: React.FC<RecentPostsProps> = ({ limit = 5 }) => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const postsRes = await fetch(
-          `${Config.apiUrl}/wp/v2/posts?per_page=${limit}`
+          `${Config.apiUrl}/wp/v2/posts?per_page=1&orderby=date&order=desc`
+
         );
         const fetchedPosts: Post[] = await postsRes.json();
         setPosts(fetchedPosts);
@@ -37,9 +37,9 @@ const PostIndex: React.FC<PostIndexProps> = ({ limit = 5 }) => {
   console.log("posts",posts)
 
   return (
-    <Layout>
+    
       <section>
-        <h3 className="pb-8">Posts Archive</h3>
+        <h3 className="pt-8 pb-2">Recent Posts</h3>
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
@@ -54,8 +54,9 @@ const PostIndex: React.FC<PostIndexProps> = ({ limit = 5 }) => {
           ))}
         </ul>
       </section>
-    </Layout>
+  
   );
 };
 
-export default PostIndex;
+export default RecentPosts;
+ 
