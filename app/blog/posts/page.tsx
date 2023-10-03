@@ -1,9 +1,12 @@
 "use client"
 
-import PostIndex from './post-index';
+
+import BlogPostForm from '@/app/components/BlogPostForm';
 
 export default function Posts() {
     return (
-      <PostIndex/>
+      <>
+      <BlogPostForm/>
+      </>
     )
   }
